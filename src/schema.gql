@@ -1,0 +1,87 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Image {
+  id: Float!
+  filename: String!
+  place: Place!
+}
+
+type Place {
+  id: ID!
+  name: String!
+  description: String!
+  location: String!
+  latitude: String!
+  longitude: String!
+  open_hours: String!
+  images: [Image!]
+}
+
+type User {
+  id: ID!
+  email: String!
+  is_admin: Boolean
+  password: String!
+}
+
+type Query {
+  place(id: String!): Place!
+  user(id: Int!): User!
+  image(id: Int!): Image!
+}
+
+type Mutation {
+  createPlace(createPlaceInput: CreatePlaceInput!): Place!
+  updatePlace(updatePlaceInput: UpdatePlaceInput!): Place!
+  removePlace(id: String!): Place!
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  removeUser(id: Int!): User!
+  createImage(createImageInput: CreateImageInput!): Image!
+  updateImage(updateImageInput: UpdateImageInput!): Image!
+  removeImage(id: Int!): Image!
+}
+
+input CreatePlaceInput {
+  name: String!
+  description: String!
+  location: String!
+  latitude: String!
+  longitude: String!
+  open_hours: String!
+}
+
+input UpdatePlaceInput {
+  name: String
+  description: String
+  location: String
+  latitude: String
+  longitude: String
+  open_hours: String
+  id: ID!
+}
+
+input CreateUserInput {
+  email: String!
+  password: String!
+}
+
+input UpdateUserInput {
+  email: String
+  password: String
+  id: Int!
+}
+
+input CreateImageInput {
+  filename: String!
+  placeId: String!
+}
+
+input UpdateImageInput {
+  filename: String
+  placeId: String
+  id: ID!
+  file: String!
+}
